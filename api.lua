@@ -5,6 +5,12 @@ sfinv = {
 	enabled = true
 }
 
+if not minetest.features.formspec_prepends then
+	sfinv.gui_bg = "bgcolor[#080808BB;true]"
+	sfinv.gui_bg_img = "background[5,5;1,1;gui_formbg.png;true]"
+	sfinv.gui_slots = "listcolors[#00000069;#5A5A5A;#141318;#30434C;#FFF]"
+end
+
 function sfinv.register_page(name, def)
 	assert(name, "Invalid sfinv page. Requires a name")
 	assert(def, "Invalid sfinv page. Requires a def[inition] table")
@@ -36,10 +42,10 @@ function sfinv.get_nav_fs(player, context, nav, current_idx)
 	end
 end
 
-local theme_main = "bgcolor[#080808BB;true]" .. default.gui_bg ..
-		default.gui_bg_img
+local theme_main = "bgcolor[#080808BB;true]" .. sfinv.gui_bg ..
+		sfinv.gui_bg_img
 
-local theme_inv = default.gui_slots .. [[
+local theme_inv = sfinv.gui_slots .. [[
 		list[current_player;main;0,4.7;8,1;]
 		list[current_player;main;0,5.85;8,3;8]
 	]]
