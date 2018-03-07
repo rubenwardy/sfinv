@@ -5,10 +5,14 @@ sfinv = {
 	enabled = true
 }
 
-if not minetest.features.formspec_prepends then
-	sfinv.gui_bg = "bgcolor[#080808BB;true]"
+if minetest.features.formspec_prepends then
+	sfinv.gui_bg     = ""
+	sfinv.gui_bg_img = ""
+	sfinv.gui_slots  = ""
+else
+	sfinv.gui_bg     = "bgcolor[#080808BB;true]"
 	sfinv.gui_bg_img = "background[5,5;1,1;gui_formbg.png;true]"
-	sfinv.gui_slots = "listcolors[#00000069;#5A5A5A;#141318;#30434C;#FFF]"
+	sfinv.gui_slots  = "listcolors[#00000069;#5A5A5A;#141318;#30434C;#FFF]"
 end
 
 function sfinv.register_page(name, def)
