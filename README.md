@@ -9,6 +9,9 @@ License: MIT
 
 ## API
 
+It is recommended that you read this link for a good introduction to the sfinv API
+by its author: https://rubenwardy.com/minetest_modding_book/en/chapters/sfinv.html
+
 ### sfinv Methods
 
 **Pages**
