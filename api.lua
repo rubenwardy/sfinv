@@ -5,16 +5,6 @@ sfinv = {
 	enabled = true
 }
 
-if minetest.features.formspec_prepends then
-	sfinv.gui_bg     = ""
-	sfinv.gui_bg_img = ""
-	sfinv.gui_slots  = ""
-else
-	sfinv.gui_bg     = "bgcolor[#080808BB;true]"
-	sfinv.gui_bg_img = "background[5,5;1,1;gui_formbg.png;true]"
-	sfinv.gui_slots  = "listcolors[#00000069;#5A5A5A;#141318;#30434C;#FFF]"
-end
-
 function sfinv.register_page(name, def)
 	assert(name, "Invalid sfinv page. Requires a name")
 	assert(def, "Invalid sfinv page. Requires a def[inition] table")
@@ -46,24 +36,26 @@ function sfinv.get_nav_fs(player, context, nav, current_idx)
 	end
 end
 
-local theme_main = "bgcolor[#080808BB;true]" .. sfinv.gui_bg ..
-		sfinv.gui_bg_img
-
-local theme_inv = sfinv.gui_slots .. [[
-		list[current_player;main;0,4.7;8,1;]
-		list[current_player;main;0,5.85;8,3;8]
+local theme_inv = [[
+		image[0,5.2;1,1;gui_hb_bg.png]
+		image[1,5.2;1,1;gui_hb_bg.png]
+		image[2,5.2;1,1;gui_hb_bg.png]
+		image[3,5.2;1,1;gui_hb_bg.png]
+		image[4,5.2;1,1;gui_hb_bg.png]
+		image[5,5.2;1,1;gui_hb_bg.png]
+		image[6,5.2;1,1;gui_hb_bg.png]
+		image[7,5.2;1,1;gui_hb_bg.png]
+		list[current_player;main;0,5.2;8,1;]
+		list[current_player;main;0,6.35;8,3;8]
 	]]
 
 function sfinv.make_formspec(player, context, content, show_inv, size)
 	local tmp = {
-		size or "size[8,8.6]",
-		theme_main,
+		size or "size[8,9.1]",
 		sfinv.get_nav_fs(player, context, context.nav_titles, context.nav_idx),
+		show_inv and theme_inv or "",
 		content
 	}
-	if show_inv then
-		tmp[#tmp + 1] = theme_inv
-	end
 	return table.concat(tmp, "")
 end
 
@@ -147,6 +139,11 @@ function sfinv.set_page(player, pagename)
 		page:on_enter(player, context)
 	end
 	sfinv.set_player_inventory_formspec(player, context)
+end
+
+function sfinv.get_page(player)
+	local context = sfinv.contexts[player:get_player_name()]
+	return context and context.page or sfinv.get_homepage_name(player)
 end
 
 minetest.register_on_joinplayer(function(player)

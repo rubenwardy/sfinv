@@ -4,8 +4,10 @@
 
 A cleaner, simpler solution to having an advanced inventory in Minetest.
 
-Written by rubenwardy.  
+Written by rubenwardy.\\
 License: MIT
+
+* sfinv_crafting_arrow.png - by paramat, derived from a texture by BlockMen (CC BY-SA 3.0).
 
 ## API
 
