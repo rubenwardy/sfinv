@@ -11,7 +11,17 @@ sfinv.register_page("sfinv:crafting", {
 		return sfinv.make_formspec(player, context, [[
 				list[current_player;craft;1.75,0.5;3,3;]
 				list[current_player;craftpreview;5.75,1.5;1,1;]
+				image[1.75,0.5;1,1;gui_hb_bg.png]
+				image[2.75,0.5;1,1;gui_hb_bg.png]
+				image[3.75,0.5;1,1;gui_hb_bg.png]
+				image[1.75,1.5;1,1;gui_hb_bg.png]
+				image[2.75,1.5;1,1;gui_hb_bg.png]
+				image[3.75,1.5;1,1;gui_hb_bg.png]
+				image[1.75,2.5;1,1;gui_hb_bg.png]
+				image[2.75,2.5;1,1;gui_hb_bg.png]
+				image[3.75,2.5;1,1;gui_hb_bg.png]
 				image[4.75,1.5;1,1;sfinv_crafting_arrow.png]
+				image[5.75,1.5;1,1;gui_hb_bg.png]
 				listring[current_player;main]
 				listring[current_player;craft]
 			]], true)
